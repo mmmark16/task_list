@@ -63,17 +63,19 @@ class _TaskItemState extends State<TaskItem> {
                     )
                   : null,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: Text(
-                widget.text,
-                style: TextStyle(
-                    fontSize: 18,
-                    color: MediaQuery.of(context).platformBrightness ==
-                            Brightness.light
-                        ? Color.fromRGBO(87, 87, 103, 1)
-                        : Color.fromRGBO(218, 218, 218, 1),
-                    fontWeight: FontWeight.w500),
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Text(
+                  widget.text,
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: MediaQuery.of(context).platformBrightness ==
+                              Brightness.light
+                          ? Color.fromRGBO(87, 87, 103, 1)
+                          : Color.fromRGBO(218, 218, 218, 1),
+                      fontWeight: FontWeight.w500),
+                ),
               ),
             )
           ],
