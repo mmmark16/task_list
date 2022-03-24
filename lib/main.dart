@@ -7,21 +7,26 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(FutureBuilder<List>(future: getPrefs(),builder: (context, snapshot) {
-    if (snapshot.hasData) {
-      var nameTitle = snapshot.data![0];
-      var checklist = snapshot.data![1];
-      return Tasklist(nameTitle, checklist);
-    } else {
-      return const MaterialApp(
-        home: Scaffold(
-          body: Center(
-            child: CircularProgressIndicator(),
-          ),
-        ),
-      );
-    }
-  }));
+  runApp(FutureBuilder<List>(
+      future: getPrefs(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          var nameTitle = snapshot.data![0];
+          var checklist = snapshot.data![1];
+          return MaterialApp(
+            title: 'TaskList',
+            home: Tasklist(nameTitle, checklist),
+          );
+        } else {
+          return const MaterialApp(
+            home: Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
+            ),
+          );
+        }
+      }));
 }
 
 Future<List> getPrefs() async {
